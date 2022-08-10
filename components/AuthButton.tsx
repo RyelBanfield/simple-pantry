@@ -8,7 +8,7 @@ const AuthButton = () => {
       <button
         type="button"
         onClick={() => signOut()}
-        className="bg-green-600 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+        className="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-6 rounded"
       >
         Sign out
       </button>
@@ -16,7 +16,7 @@ const AuthButton = () => {
       <button
         type="button"
         onClick={() => signIn()}
-        className="bg-green-600 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+        className="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-6 rounded"
       >
         Sign in
       </button>

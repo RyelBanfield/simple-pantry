@@ -38,13 +38,9 @@ const Home: NextPage = () => {
       </main>
     ) : (
       <>
-        <Navbar />
-        <main className="bg-white flex flex-col flex-grow justify-center items-center p-5">
-          <h1 className="text-xl font-bold">
-            Welcome
-            {' '}
-            {session.user?.name}
-          </h1>
+        <Navbar name={session.user!.name!.split(' ')[0]} />
+        <main className="bg-white flex flex-col flex-grow items-center p-5">
+          xxx
         </main>
       </>
     )
