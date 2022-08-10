@@ -3,8 +3,6 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { SessionProvider } from 'next-auth/react';
 
-import Navbar from '../components/Navbar';
-
 import '../styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
@@ -15,10 +13,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Navbar />
-    <main className="flex flex-col flex-grow justify-center items-center p-5">
-      <Component {...pageProps} />
-    </main>
+    <Component {...pageProps} />
   </SessionProvider>
 );
 
