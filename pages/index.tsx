@@ -1,18 +1,29 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
+import { signIn, useSession } from 'next-auth/react';
 
-const Home: NextPage = () => (
-  <>
-    <Head>
-      <title>Simple Pantry</title>
-      <meta name="description" content="Your pantry made simple" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const Home: NextPage = () => {
+  const { data: session } = useSession();
 
-    <main className="h-screen grid place-content-center">
-      <h1 className="text-3xl font-bold">Hello World!</h1>
-    </main>
-  </>
-);
+  return (
+    !session ? (
+      <>
+        <h1 className="text-xl font-bold text-green-600">Ready to simplify your pantry shopping?</h1>
+        <button
+          type="button"
+          onClick={() => signIn()}
+          className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+        >
+          Sign in
+        </button>
+      </>
+    ) : (
+      <h1 className="text-xl font-bold text-green-600">
+        Welcome
+        {' '}
+        {session.user?.name}
+      </h1>
+    )
+  );
+};
 
 export default Home;
