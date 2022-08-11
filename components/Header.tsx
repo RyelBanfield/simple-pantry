@@ -7,12 +7,12 @@ type Props = {
 };
 
 const Header = ({ image, name }: Props) => (
-  <div className="flex">
+  <div className="flex mb-5">
     <div className="pr-5 pb-5">
-      <Image src={image} alt={name} layout="fixed" height="50" width="50" className="rounded" />
+      <Image src={image} alt={name} layout="fixed" height="60" width="60" className="rounded" />
     </div>
     <div>
-      <h1 className="font-bold">
+      <h1 className="font-bold text-2xl">
         Hey
         {' '}
         {name.split(' ')[0]}

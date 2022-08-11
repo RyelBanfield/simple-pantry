@@ -3,6 +3,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { TailSpin } from 'react-loader-spinner';
 
 import Header from '../components/Header';
+import IngredientForm from '../components/IngredientForm';
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
     ) : (
       <main className="bg-gray-100 flex flex-col flex-grow p-8">
         <Header image={session.user!.image || ''} name={session.user!.name || ''} />
+        <IngredientForm />
       </main>
     )
   );
