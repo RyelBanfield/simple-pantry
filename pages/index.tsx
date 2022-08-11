@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import type { NextPage } from 'next';
 import { signIn, useSession } from 'next-auth/react';
 import { TailSpin } from 'react-loader-spinner';
 
 import Header from '../components/Header';
 import IngredientForm from '../components/IngredientForm';
+import IngredientList from '../components/IngredientList';
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
+  const [ingredients, setIngredients] = useState<string[] | null>(null);
 
   if (status === 'loading') {
     return (
@@ -38,9 +41,10 @@ const Home: NextPage = () => {
         </button>
       </main>
     ) : (
-      <main className="bg-gray-100 flex flex-col flex-grow p-8">
+      <main className="bg-gray-100 flex flex-col flex-grow p-8 align-center">
         <Header image={session.user!.image || ''} name={session.user!.name || ''} />
-        <IngredientForm />
+        <IngredientForm ingredients={ingredients} setIngredients={setIngredients} />
+        <IngredientList ingredients={ingredients} setIngredients={setIngredients} />
       </main>
     )
   );
