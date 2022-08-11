@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { signIn, useSession } from 'next-auth/react';
 import { TailSpin } from 'react-loader-spinner';
 
-import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
@@ -37,12 +37,9 @@ const Home: NextPage = () => {
         </button>
       </main>
     ) : (
-      <>
-        <Navbar name={session.user!.name!.split(' ')[0]} />
-        <main className="bg-white flex flex-col flex-grow items-center p-5">
-          xxx
-        </main>
-      </>
+      <main className="bg-gray-100 flex flex-col flex-grow p-8">
+        <Header image={session.user!.image || ''} name={session.user!.name || ''} />
+      </main>
     )
   );
 };
