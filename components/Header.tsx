@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { signOut } from 'next-auth/react';
+import { AiOutlineLogout } from 'react-icons/ai';
 
 type Props = {
   image: string;
@@ -19,6 +21,11 @@ const Header = ({ image, name }: Props) => (
         !
       </h1>
       <p className="font-medium">What do you have in your pantry?</p>
+    </div>
+    <div className="flex flex-col ml-auto justify-center items-center pb-5">
+      <button type="button" className="text-red-500" onClick={() => signOut()}>
+        <AiOutlineLogout size={24} />
+      </button>
     </div>
   </div>
 );
