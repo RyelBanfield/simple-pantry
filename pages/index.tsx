@@ -4,12 +4,12 @@ import { signIn, useSession } from 'next-auth/react';
 import { TailSpin } from 'react-loader-spinner';
 
 import Header from '../components/Header';
-import IngredientForm from '../components/IngredientForm';
-import IngredientList from '../components/IngredientList';
+import SearchForm from '../components/SearchForm';
+import SearchResults from '../components/SearchResults';
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
-  const [ingredients, setIngredients] = useState<string[] | null>(null);
+  const [query, setQuery] = useState<string | null>(null);
 
   if (status === 'loading') {
     return (
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
   return (
     !session ? (
       <main className="bg-green-500 flex flex-col flex-grow justify-center items-center p-5">
-        <h1 className="text-xl font-bold text-white pb-5">Ready to simplify your pantry shopping?</h1>
+        <h1 className="text-xl font-bold text-white pb-5 text-center">Ready to simplify your shopping?</h1>
         <button
           type="button"
           onClick={() => signIn('google')}
@@ -41,10 +41,10 @@ const Home: NextPage = () => {
         </button>
       </main>
     ) : (
-      <main className="bg-gray-100 flex flex-col flex-grow p-8 align-center">
+      <main className="bg-gray-100 flex flex-col flex-grow pt-10 px-4">
         <Header image={session.user!.image || ''} name={session.user!.name || ''} />
-        <IngredientForm ingredients={ingredients} setIngredients={setIngredients} />
-        <IngredientList ingredients={ingredients} setIngredients={setIngredients} />
+        <SearchForm setQuery={setQuery} />
+        <SearchResults query={query} />
       </main>
     )
   );

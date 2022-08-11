@@ -15,7 +15,7 @@ const IngredientList = ({ ingredients, setIngredients }: Props) => (
       <h2 className="font-medium text-gray-800 text-xl mb-4">Your Ingredients</h2>
       <div className="flex flex-wrap max-w-lg">
         {ingredients.map((ingredient) => (
-          <div key={ingredient} className="w-1/3 max-w-xs">
+          <div key={ingredient} className="w-full">
             <div className="card bg-green-400 m-2">
               <div className="card-body">
                 <h2 className="capitalize text-center text-black">{ingredient}</h2>
