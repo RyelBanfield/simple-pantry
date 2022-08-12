@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
+import { v4 as uuidv4 } from 'uuid';
 
 type Props = { query: string | null };
 
@@ -78,9 +79,9 @@ const SearchResults = ({ query }: Props) => {
           {' '}
           {query}
         </h1>
-        <div className="flex flex-wrap justify-between gap-6 md:gap-12">
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {results.hits.map(({ recipe }) => (
-            <div key={recipe.label} className="bg-gray-800 rounded-md w-full md:w-80 lg:w-72">
+            <div key={uuidv4()} className="bg-gray-800 rounded-md w-full">
               <Image src={recipe.image} alt={recipe.label} layout="responsive" height="1080" width="1920" objectFit="cover" className="w-full rounded-t" />
               <div className="pt-4 px-2 flex justify-between">
                 <h2 className="text-sm font-medium pb-5 capitalize text-gray-400">{recipe.label.split(' ').slice(0, 3).join(' ')}</h2>
