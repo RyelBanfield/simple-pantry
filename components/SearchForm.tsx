@@ -17,8 +17,8 @@ const SearchForm = ({ setQuery }: Props) => {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mb-10">
-      <input {...register('query', { required: true, pattern: /^[a-zA-Z1-9].*/ })} placeholder="What's In Your Pantry?" className="flex-grow rounded p-3 mr-2 mb-4 capitalize text-black" />
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mb-10 container mx-auto max-w-sm">
+      <input {...register('query', { required: true, pattern: /^[a-zA-Z1-9].*/ })} placeholder="What's In Your Pantry?" className="flex-grow rounded p-3 mb-4 capitalize text-black" />
       <button
         type="submit"
         className="bg-green-400 hover:bg-green-600 text-black p-3 rounded border-0"
