@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         </button>
       </main>
     ) : (
-      <main className="bg-gray-100 flex flex-col flex-grow pt-10 px-4 sm:px-24">
+      <main className="bg-gray-100 flex flex-col flex-grow pt-10 px-4 md:px-16">
         <Header image={session.user!.image || ''} name={session.user!.name || ''} />
         <SearchForm setQuery={setQuery} />
         <SearchResults query={query} />

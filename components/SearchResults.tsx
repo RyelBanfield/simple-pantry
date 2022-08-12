@@ -73,14 +73,14 @@ const SearchResults = ({ query }: Props) => {
       </div>
     ) : (
       <div className="flex flex-col flex-grow mb-10">
-        <h1 className="text-xl font-bold text-gray-800 pb-10 capitalize">
+        <h1 className="text-xl font-bold text-gray-800 pb-6 capitalize">
           Recipes including
           {' '}
           {query}
         </h1>
-        <div className="flex flex-wrap justify-between gap-12">
+        <div className="flex flex-wrap justify-between gap-6 lg:gap-3">
           {results.hits.map(({ recipe }) => (
-            <div key={recipe.label} className="bg-gray-800 rounded-md w-72">
+            <div key={recipe.label} className="bg-gray-800 rounded-md w-full md:w-72">
               <Image src={recipe.image} alt={recipe.label} layout="responsive" height="1080" width="1920" objectFit="cover" className="w-full rounded-t" />
               <div className="pt-4 px-2 flex justify-between">
                 <h2 className="text-sm font-medium pb-5 capitalize text-gray-400">{recipe.label.split(' ').slice(0, 3).join(' ')}</h2>
