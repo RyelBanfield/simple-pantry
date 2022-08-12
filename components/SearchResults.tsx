@@ -49,10 +49,6 @@ const SearchResults = ({ query }: Props) => {
     return () => setResults(null);
   }, [query]);
 
-  useEffect(() => {
-    if (results) console.log(results);
-  }, [results]);
-
   if (loading) {
     return (
       <main className="bg-green-500 flex flex-col flex-grow justify-center items-center p-5">
@@ -76,26 +72,23 @@ const SearchResults = ({ query }: Props) => {
         <h1 className="text-md font-bold text-gray-800 pb-5">Enter An Ingredient To Find Recipes</h1>
       </div>
     ) : (
-      <div className="flex flex-col flex-grow">
-        <h1 className="text-xl font-bold text-gray-800 pb-5 capitalize">
+      <div className="flex flex-col flex-grow mb-10">
+        <h1 className="text-xl font-bold text-gray-800 pb-10 capitalize">
           Recipes including
           {' '}
           {query}
         </h1>
-        <div className="">
+        <div className="flex flex-wrap justify-between gap-12">
           {results.hits.map(({ recipe }) => (
-            <div key={recipe.label} className="bg-gray-800 rounded mb-5 w-72 h-64">
+            <div key={recipe.label} className="bg-gray-800 rounded-md w-72">
               <Image src={recipe.image} alt={recipe.label} layout="responsive" height="1080" width="1920" objectFit="cover" className="w-full rounded-t" />
-              <div className="pt-4 px-2 flex justify-center items-center ">
-                <h2 className="text-sm font-medium pb-5 capitalize text-gray-400">
-                  {recipe.label}
+              <div className="pt-4 px-2 flex justify-between">
+                <h2 className="text-sm font-medium pb-5 capitalize text-gray-400">{recipe.label.split(' ').slice(0, 3).join(' ')}</h2>
+                <span className="text-xs font-normal text-gray-500">
+                  {recipe.calories.toFixed(0)}
                   {' '}
-                  <span className="text-xs font-normal text-gray-500">
-                    {recipe.calories.toFixed(0)}
-                    {' '}
-                    Cals
-                  </span>
-                </h2>
+                  cals
+                </span>
               </div>
             </div>
           ))}
