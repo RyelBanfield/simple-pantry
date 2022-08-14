@@ -47,7 +47,7 @@ const SearchResults = ({ query }: Props) => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.5,
+        staggerChildren: 0.25,
       },
     },
   };
@@ -63,7 +63,7 @@ const SearchResults = ({ query }: Props) => {
         <h1 className="text-md font-bold text-gray-800 pb-5">Enter An Ingredient To Find Recipes</h1>
       </div>
     ) : (
-      <div className="flex flex-col flex-grow mb-10">
+      <div className="flex flex-col flex-grow mb-10 items-center">
         {!modalOpen ? (
           <>
             <h1 className="text-xl font-bold text-gray-800 pb-6 capitalize">
@@ -104,7 +104,7 @@ const SearchResults = ({ query }: Props) => {
             </motion.div>
           </>
         ) : (
-          <motion.div variants={item} className="bg-gray-800 rounded-md w-full flex flex-col flex-grow">
+          <motion.div variants={item} className="bg-gray-800 rounded-md w-full flex flex-col flex-grow max-w-xs">
             <Image src={selectedRecipe.image} alt={selectedRecipe.label} layout="responsive" height="1080" width="1920" objectFit="cover" className="w-full rounded-t" />
             <div className="p-6">
               <div className="flex justify-between">
