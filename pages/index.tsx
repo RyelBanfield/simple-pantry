@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { NextPage } from 'next';
 import { signIn, useSession } from 'next-auth/react';
+import { motion } from 'framer-motion';
 import { TailSpin } from 'react-loader-spinner';
 
 import Header from '../components/Header';
@@ -41,11 +42,17 @@ const Home: NextPage = () => {
         </button>
       </main>
     ) : (
-      <main className="bg-gray-100 flex flex-col flex-grow pt-10 px-4 sm:px-10 md:px-16 lg:px-24">
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="bg-gray-100 flex flex-col flex-grow pt-10 px-4 sm:px-10 md:px-16 lg:px-24"
+      >
         <Header image={session.user!.image || ''} name={session.user!.name || ''} />
         <SearchForm setQuery={setQuery} />
         <SearchResults query={query} />
-      </main>
+      </motion.main>
     )
   );
 };
